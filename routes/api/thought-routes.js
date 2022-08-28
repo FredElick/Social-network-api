@@ -8,7 +8,7 @@ const {
     addReaction,
     removeReaction
 
-} = require('../../controllers/pizzaController');
+} = require('../../controllers/thoughtController');
 
 router
 .route('/')
@@ -16,16 +16,25 @@ router
 .post(addThought);
 
 router
-    .route('/:id')
+    .route('/:thoughtId')
     .get(getThoughtById)
     .put(updateThought)
     .delete(deleteThought);
 
 router
-    .route('/:thoughtId/reactions')
-    .post(addReaction)
+.route('/:thoughtId/reaction/:reactionId')
+.delete(removeReaction);
 
 router
-    .route('/:thoughtId/:reactionId')
-    .delete(removeReaction)
+    .route('/:thoughtId/reactions')
+    .post(addReaction);
+
+
+
+
+
+
+
+
+
 module.exports = router;
